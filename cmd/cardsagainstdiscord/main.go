@@ -21,7 +21,7 @@ func panicErr(err error, msg string) {
 }
 
 func main() {
-	session, err := discordgo.New(os.Getenv("DG_TOKEN"))
+	session, err := discordgo.New(os.Getenv("Bot Nzg4NzA5OTA1MTk2Mzg0MjY2.X9ndVg.aaioYFKkjWznHoxEAbOzYFXKH_4"))
 	panicErr(err, "Failed initializing discordgo")
 
 	cahManager = cardsagainstdiscord.NewGameManager(&cardsagainstdiscord.StaticSessionProvider{
