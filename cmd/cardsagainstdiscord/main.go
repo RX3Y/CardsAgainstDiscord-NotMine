@@ -7,10 +7,25 @@ import (
 	"github.com/jonas747/dstate"
 	"log"
 	"net/http"
+	"flag"
 	_ "net/http/pprof"
 	"os"
 	"strings"
 )
+var (
+	Token      string
+)
+
+func init() {
+
+	flag.StringVar(&Token, "t", "", "Bot Token")
+	flag.Parse()
+
+	if Token == "" {
+		flag.Usage()
+		os.Exit(1)
+	}
+}
 
 var cahManager *cardsagainstdiscord.GameManager
 
@@ -21,7 +36,7 @@ func panicErr(err error, msg string) {
 }
 
 func main() {
-	session, err := discordgo.New(os.Getenv("Bot Nzg4NzA5OTA1MTk2Mzg0MjY2.X9ndVg.aaioYFKkjWznHoxEAbOzYFXKH_4"))
+	session, err := discordgo.New("Bot " + Token)
 	panicErr(err, "Failed initializing discordgo")
 
 	cahManager = cardsagainstdiscord.NewGameManager(&cardsagainstdiscord.StaticSessionProvider{
